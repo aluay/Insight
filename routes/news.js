@@ -119,11 +119,11 @@ async function getFilteredNews(rawNews) {
     let filteredNews = [];
 
     /* 
-        Loop through each JSON object and extract info from it
+        Loop through each JSON object and extract info from it.
         This for loop will look for certain object keys and will
         extract info based on the keys it finds since each news
         source uses different terminology for media content
-        The loop for look look for the media and parse the info
+        The loop looks for the media and parses the info
         from the object based on the media content object key
         This for loop will also handle time/date formats if the
         source is using a different time/date format than usual
