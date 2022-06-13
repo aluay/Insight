@@ -35,6 +35,23 @@ router.get("/", async (req, res) => {
     res.send(filteredNews);
 });
 
+//  This endpoint grabs the top 10 articles about a company or stock symbol
+router.get("/:keyword", async (req, res) => {
+    const news = await search(req.params.keyword);
+    res.send(news);
+});
+
+//  Get top 10 news articles about a company or stock symbol
+async function search(keyword) {
+    const URL = `https://query2.finance.yahoo.com/v1/finance/search?q=${keyword}&lang=en-US&region=US&quotesCount=6&newsCount=10&listsCount=2&enableFuzzyQuery=false&quotesQueryId=tss_match_phrase_query&multiQuoteQueryId=multi_quote_single_token_query&newsQueryId=news_cie_vespa&enableCb=true&enableNavLinks=true&enableEnhancedTrivialQuery=true`;
+    const response = await fetch(URL);
+    if (response) {
+        const data = await response.json();
+        return data.news;
+    } else {
+        return null;
+    }
+}
 
 //  This endpoint loads up the business news
 router.get("/business", async (req, res) => {
