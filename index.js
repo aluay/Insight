@@ -8,7 +8,7 @@ import insights from "./routes/insights.js"
 
 //	Constants
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 //	Home page
 app.get("/", async (req, res) => {
