@@ -14,7 +14,11 @@ async function search(keyword) {
     const response = await fetch(URL);
     if (response) {
         const data = await response.json();
-        return data;
+        if (data) {
+            return data;
+        } else {
+            return null;
+        }
     } else {
         return null;
     }

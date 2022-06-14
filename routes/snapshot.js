@@ -72,7 +72,11 @@ async function getGainers() {
         for (let i = 0; i < data.finance.result[0].quotes.length; i++) {
             gainers.push(data.finance.result[0].quotes[i])
         }
-        return gainers;
+        if (gainers) {
+            return gainers;
+        } else {
+            return null;
+        }
     } else {
         return "Something went wrong.";
     }
@@ -90,7 +94,11 @@ async function getLosers() {
         for (let i = 0; i < data.finance.result[0].quotes.length; i++) {
             losers.push(data.finance.result[0].quotes[i])
         }
-        return losers;
+        if (losers) {
+            return losers;
+        } else {
+            return null;
+        }
     } else {
         return "Something went wrong.";
     }
@@ -108,7 +116,11 @@ async function getMostActiveSymbols() {
         for (let i = 0; i < data.finance.result[0].quotes.length; i++) {
             mostActive.push(data.finance.result[0].quotes[i])
         }
-        return mostActive;
+        if (mostActive) {
+            return mostActive;
+        } else {
+            return null;
+        }
     } else {
         return "Something went wrong.";
     }
@@ -127,7 +139,11 @@ async function getTrendingSymbols() {
         for (let i = 0; i < info.quoteResponse.result.length; i++) {
             trendingSymbols.push(info.quoteResponse.result[i])
         }
-        return trendingSymbols;
+        if (trendingSymbols) {
+            return trendingSymbols;
+        } else {
+            return null;
+        }
     } else {
         return "Something went wrong.";
     }
@@ -144,7 +160,11 @@ async function getTrendingSymbolsInfo(data) {
     const response = await fetch(URL);
     if (response) {
         const fullData = await response.json();
-        return fullData;
+        if (fullData) {
+            return fullData
+        } else {
+            return null
+        }
     } else {
         return "Something went wrong.";
     }
@@ -158,7 +178,11 @@ async function getMarketTime() {
     const response = await fetch(URL);
     if (response) {
         const data = await response.json();
-        return data;
+        if (data) {
+            return data
+        } else {
+            return null
+        }
     } else {
         return "Something went wrong.";
     }

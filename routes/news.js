@@ -47,7 +47,11 @@ async function search(keyword) {
     const response = await fetch(URL);
     if (response) {
         const data = await response.json();
-        return data.news;
+        if (data.news) {
+            return data.news;
+        } else {
+            return null;
+        }
     } else {
         return null;
     }
