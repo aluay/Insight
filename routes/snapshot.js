@@ -64,7 +64,7 @@ async function getGainers() {
     let gainers = []
 
     const URL =
-        "https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=false&lang=en-US&region=US&scrIds=day_gainers&count=5&corsDomain=finance.yahoo.com";
+        "https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=false&lang=en-US&region=US&scrIds=day_gainers&count=10&corsDomain=finance.yahoo.com";
 
     const response = await fetch(URL);
     if (response) {
@@ -86,7 +86,7 @@ async function getGainers() {
 async function getLosers() {
     let losers = []
     const URL =
-        "https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=false&lang=en-US&region=US&scrIds=day_losers&count=5&corsDomain=finance.yahoo.com";
+        "https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=false&lang=en-US&region=US&scrIds=day_losers&count=10&corsDomain=finance.yahoo.com";
 
     const response = await fetch(URL);
     if (response) {
@@ -108,7 +108,7 @@ async function getLosers() {
 async function getMostActiveSymbols() {
     let mostActive = []
     const URL =
-        "https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=false&lang=en-US&region=US&scrIds=most_actives&count=5&corsDomain=finance.yahoo.com";
+        "https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=false&lang=en-US&region=US&scrIds=most_actives&count=10&corsDomain=finance.yahoo.com";
 
     const response = await fetch(URL);
     if (response) {
@@ -130,7 +130,7 @@ async function getMostActiveSymbols() {
 async function getTrendingSymbols() {
     let trendingSymbols = [];
     const URL =
-        "https://query2.finance.yahoo.com/v1/finance/trending/US?lang=en-US&region=US&count=5&corsDomain=finance.yahoo.com";
+        "https://query2.finance.yahoo.com/v1/finance/trending/US?lang=en-US&region=US&count=10&corsDomain=finance.yahoo.com";
 
     const response = await fetch(URL);
     if (response) {

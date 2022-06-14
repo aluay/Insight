@@ -4,12 +4,12 @@ const router = express.Router();
 
 //   This endpoint will get insights of a company or stock
 router.get("/:keyword", async (req, res) => {
-    const result = await search(req.params.keyword);
+    const result = await insights(req.params.keyword);
     res.send(result);
 });
 
 //  Get insights of a company or stock
-async function search(keyword) {
+async function insights(keyword) {
     const URL = `https://query2.finance.yahoo.com/ws/insights/v2/finance/insights?symbol=${keyword}`;
     const response = await fetch(URL);
     if (response) {

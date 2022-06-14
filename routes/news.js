@@ -1,5 +1,4 @@
 import express from "express";
-import moment from "moment";
 import fetch from "node-fetch";
 import {
     parseString
@@ -36,13 +35,13 @@ router.get("/", async (req, res) => {
 });
 
 //  This endpoint grabs the top 10 articles about a company or stock symbol
-router.get("/:keyword", async (req, res) => {
-    const news = await search(req.params.keyword);
+router.get("/quote/:keyword", async (req, res) => {
+    const news = await companyOrStockNews(req.params.keyword);
     res.send(news);
 });
 
 //  Get top 10 news articles about a company or stock symbol
-async function search(keyword) {
+async function companyOrStockNews(keyword) {
     const URL = `https://query2.finance.yahoo.com/v1/finance/search?q=${keyword}&lang=en-US&region=US&quotesCount=6&newsCount=10&listsCount=2&enableFuzzyQuery=false&quotesQueryId=tss_match_phrase_query&multiQuoteQueryId=multi_quote_single_token_query&newsQueryId=news_cie_vespa&enableCb=true&enableNavLinks=true&enableEnhancedTrivialQuery=true`;
     const response = await fetch(URL);
     if (response) {
@@ -107,7 +106,7 @@ router.get("/health", async (req, res) => {
         filteredNews[j] = temp;
     }
 
-    //  Serve filtered news
+    //  Return filtered news object
     res.send(filteredNews);
 });
 
@@ -160,22 +159,11 @@ async function getFilteredNews(rawNews) {
                 for (const item in rawNews[i][j]["media:thumbnail"]) {
                     if (rawNews[i][j]["media:thumbnail"][item]["$"]) {
                         let pubDate = "";
-                        //  Handle time/date formats
-                        if (rawNews[i][j]["pubDate"] == null) {
-                            pubDate = new Date();
-                            var dd = String(pubDate.getDate()).padStart(2, '0');
-                            var mm = String(pubDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-                            var yyyy = pubDate.getFullYear();
-
-                            pubDate = mm + '/' + dd + '/' + yyyy;
-                        } else {
-                            pubDate = new Date(rawNews[i][j]["pubDate"]);
-                        }
                         //  Construct the filtered news object
                         filteredNews.push({
                             title: rawNews[i][j]["title"],
                             link: rawNews[i][j]["link"],
-                            pubDate: moment.utc(pubDate.toLocaleString()).fromNow(),
+                            pubDate: rawNews[i][j]["pubDate"],
                             source: i,
                             description: rawNews[i][j]["description"],
                             media: rawNews[i][j]["media:thumbnail"][item]["$"].url
@@ -188,22 +176,11 @@ async function getFilteredNews(rawNews) {
                 for (const item in rawNews[i][j]["enclosure"]) {
                     if (rawNews[i][j]["enclosure"][item]["$"]) {
                         let pubDate = "";
-                        //  Handle time/date formats
-                        if (rawNews[i][j]["pubDate"] == null) {
-                            pubDate = new Date();
-                            var dd = String(pubDate.getDate()).padStart(2, '0');
-                            var mm = String(pubDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-                            var yyyy = pubDate.getFullYear();
-
-                            pubDate = mm + '/' + dd + '/' + yyyy;
-                        } else {
-                            pubDate = new Date(rawNews[i][j]["pubDate"]);
-                        }
                         //  Construct the filtered news object
                         filteredNews.push({
                             title: rawNews[i][j]["title"],
                             link: rawNews[i][j]["link"],
-                            pubDate: moment.utc(pubDate.toLocaleString()).fromNow(),
+                            pubDate: rawNews[i][j]["pubDate"],
                             source: i,
                             description: rawNews[i][j]["description"],
                             media: rawNews[i][j]["enclosure"][item]["$"].url
@@ -216,22 +193,11 @@ async function getFilteredNews(rawNews) {
                 for (const item in rawNews[i][j]["media:group"]) {
                     if (rawNews[i][j]["media:group"][item]["media:content"][2]["$"]) {
                         let pubDate = "";
-                        //  Handle time/date formats
-                        if (rawNews[i][j]["pubDate"] == null) {
-                            pubDate = new Date();
-                            var dd = String(pubDate.getDate()).padStart(2, '0');
-                            var mm = String(pubDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-                            var yyyy = pubDate.getFullYear();
-
-                            pubDate = mm + '/' + dd + '/' + yyyy;
-                        } else {
-                            pubDate = new Date(rawNews[i][j]["pubDate"]);
-                        }
                         //  Construct the filtered news object
                         filteredNews.push({
                             title: rawNews[i][j]["title"],
                             link: rawNews[i][j]["link"],
-                            pubDate: moment.utc(pubDate.toLocaleString()).fromNow(),
+                            pubDate: rawNews[i][j]["pubDate"],
                             source: i,
                             description: rawNews[i][j]["description"],
                             media: rawNews[i][j]["media:group"][item]["media:content"][2]["$"].url
@@ -244,22 +210,11 @@ async function getFilteredNews(rawNews) {
                 for (const item in rawNews[i][j]["media:content"]) {
                     if (rawNews[i][j]["media:content"][item]["$"]) {
                         let pubDate = "";
-                        //  Handle time/date formats
-                        if (rawNews[i][j]["pubDate"] == null) {
-                            pubDate = new Date();
-                            var dd = String(pubDate.getDate()).padStart(2, '0');
-                            var mm = String(pubDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-                            var yyyy = pubDate.getFullYear();
-
-                            pubDate = mm + '/' + dd + '/' + yyyy;
-                        } else {
-                            pubDate = new Date(rawNews[i][j]["pubDate"]);
-                        }
                         //  Construct the filtered news object
                         filteredNews.push({
                             title: rawNews[i][j]["title"],
                             link: rawNews[i][j]["link"],
-                            pubDate: moment.utc(pubDate.toLocaleString()).fromNow(),
+                            pubDate: rawNews[i][j]["pubDate"],
                             source: i,
                             description: rawNews[i][j]["description"],
                             media: rawNews[i][j]["media:content"][item]["$"].url
