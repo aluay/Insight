@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Insights API</title>
+	</head>
+	<style>
+		* {
+			box-sizing: border-box;
+			color: #3b3b3b;
+		}
+		.tb {
+			border-collapse: collapse;
+		}
+		.tb th,
+		.tb td {
+			padding: 5px;
+			border: solid 1px #ededed;
+		}
+		.tb th {
+			background-color: #ededed;
+			text-align: left;
+		}
+		.tb th {
+			border: none;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<h1>Usage</h1>
+			<p>All methods are GET</p>
+			<table class="tb">
+				<thead>
+					<th>Path</th>
+					<th>Description</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>/news</td>
+						<td>General U.S. news</td>
+					</tr>
+					<tr>
+						<td>/news/business</td>
+						<td>Business U.S. news</td>
+					</tr>
+					<tr>
+						<td>/news/health</td>
+						<td>Health U.S. news</td>
+					</tr>
+					<tr>
+						<td>/news/quote/[keyword]</td>
+						<td>Top 10 news articles about a company or a stock</td>
+					</tr>
+					<tr>
+						<td>/snapshot</td>
+						<td>Market snapshot</td>
+					</tr>
+					<tr>
+						<td>/snapshot/gainers</td>
+						<td>Top 10 daily market gainers</td>
+					</tr>
+					<tr>
+						<td>/snapshot/losers</td>
+						<td>Top 10 daily market losers</td>
+					</tr>
+					<tr>
+						<td>/snapshot/mostActive</td>
+						<td>Top 10 most active symbols</td>
+					</tr>
+					<tr>
+						<td>/snapshot/trendingSymbols</td>
+						<td>Top 10 most trending symbols</td>
+					</tr>
+					<tr>
+						<td>/snapshot/marketTime</td>
+						<td>Market time status information</td>
+					</tr>
+					<tr>
+						<td>/snapshot/marketSummary</td>
+						<td>Market summary with indicators</td>
+					</tr>
+					<tr>
+						<td>/insights/[symbol]</td>
+						<td>Get insights of a company or a stock</td>
+					</tr>
+					<tr>
+						<td>/crypto</td>
+						<td>
+							Top 200 cryptos ordered in descending order by intraday marketcap
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

@@ -13,20 +13,8 @@ const PORT = process.env.PORT || 3000;
 
 //	Home page
 app.get("/", async (req, res) => {
-    res.send({
-        "/news": "General U.S. news",
-        "/news/business": "Business U.S. news",
-        "/news/health": "Health U.S. news",
-        "/news/quote/[keyword]": "Top 10 news articles about a company or a stock",
-        "/snapshot": "Market snapshot",
-        "/snapshot/gainers": "Top 10 daily market gainers",
-        "/snapshot/losers": "Top 10 daily market losers",
-        "/snapshot/mostActive": "Top 10 most active symbols",
-        "/snapshot/trendingSymbols": "Top 10 most trending symbols",
-        "/snapshot/marketTime": "Market time status information",
-        "/snapshot/marketSummary": "Market summary with indicators",
-        "/insights/[symbol]": "Get insights of a company or a stock",
-        "/crypto":"Top 200 cryptos ordered in descending order by intraday marketcap",
+    res.sendFile('home.html', {
+        root: "./views"
     });
 });
 
