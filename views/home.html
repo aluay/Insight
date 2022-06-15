@@ -9,7 +9,13 @@
 	<style>
 		* {
 			box-sizing: border-box;
-			color: #3b3b3b;
+			background-color: #18181a;
+			color: #f7f7f7;
+			font-family: Consolas, monospace;
+		}
+		body {
+			max-width: 800px;
+			margin: 0 auto;
 		}
 		.tb {
 			border-collapse: collapse;
@@ -17,14 +23,21 @@
 		.tb th,
 		.tb td {
 			padding: 5px;
-			border: solid 1px #ededed;
 		}
 		.tb th {
-			background-color: #ededed;
+			color: #86de74;
 			text-align: left;
 		}
-		.tb th {
-			border: none;
+		.path {
+			color: #75bfff;
+		}
+		.description {
+			color: #ff7de9;
+		}
+		h1,
+		p {
+			color: #d96629;
+			padding: 5px 0px;
 		}
 	</style>
 	<body>
@@ -38,56 +51,64 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>/news</td>
-						<td>General U.S. news</td>
+						<td class="path">/news</td>
+						<td class="description">General U.S. news</td>
 					</tr>
 					<tr>
-						<td>/news/business</td>
-						<td>Business U.S. news</td>
+						<td class="path">/news/business</td>
+						<td class="description">Business U.S. news</td>
 					</tr>
 					<tr>
-						<td>/news/health</td>
-						<td>Health U.S. news</td>
+						<td class="path">/news/health</td>
+						<td class="description">Health U.S. news</td>
 					</tr>
 					<tr>
-						<td>/news/quote/[keyword]</td>
-						<td>Top 10 news articles about a company or a stock</td>
+						<td class="path">/news/quote/[keyword]</td>
+						<td class="description">
+							Top 10 news articles about a company or a stock
+						</td>
 					</tr>
 					<tr>
-						<td>/snapshot</td>
-						<td>Market snapshot</td>
+						<td class="path">/snapshot</td>
+						<td class="description">Market snapshot</td>
 					</tr>
 					<tr>
-						<td>/snapshot/gainers</td>
-						<td>Top 10 daily market gainers</td>
+						<td class="path">/snapshot/gainers</td>
+						<td class="description">Top 10 daily market gainers</td>
 					</tr>
 					<tr>
-						<td>/snapshot/losers</td>
-						<td>Top 10 daily market losers</td>
+						<td class="path">/snapshot/losers</td>
+						<td class="description">Top 10 daily market losers</td>
 					</tr>
 					<tr>
-						<td>/snapshot/mostActive</td>
-						<td>Top 10 most active symbols</td>
+						<td class="path">/snapshot/mostActive</td>
+						<td class="description">Top 10 most active symbols</td>
 					</tr>
 					<tr>
-						<td>/snapshot/trendingSymbols</td>
-						<td>Top 10 most trending symbols</td>
+						<td class="path">/snapshot/trendingSymbols</td>
+						<td class="description">Top 10 most trending symbols</td>
 					</tr>
 					<tr>
-						<td>/snapshot/marketTime</td>
-						<td>Market time status information</td>
+						<td class="path">/snapshot/marketTime</td>
+						<td class="description">Market time status information</td>
 					</tr>
 					<tr>
-						<td>/snapshot/marketSummary</td>
-						<td>Market summary with indicators</td>
+						<td class="path">/snapshot/marketSummary</td>
+						<td class="description">Market summary with indicators</td>
 					</tr>
 					<tr>
-						<td>/insights/[symbol]</td>
-						<td>Get insights of a company or a stock</td>
+						<td class="path">/insights/[symbol]</td>
+						<td class="description">Get insights of a company or a stock</td>
 					</tr>
 					<tr>
-						<td>/crypto</td>
-						<td>
+						<td class="path">/search/[keyword]</td>
+						<td class="description">
+							Return top matching results for a company name or stock
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/crypto</td>
+						<td class="description">
 							Top 200 cryptos ordered in descending order by intraday marketcap
 						</td>
 					</tr>
