@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 //     res.send(result);
 // })
 
-//  Get top 50 cryptos
+//  Get top 200 cryptos
 async function crypto() {
     const URL = `https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=true&lang=en-US&region=US&scrIds=all_cryptocurrencies_us&start=0&count=200&corsDomain=finance.yahoo.com`;
     const response = await fetch(URL);
