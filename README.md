@@ -20,13 +20,9 @@ Financial API that provides the most up to date information about markets, stock
 - Dark pools
 - Short interest
 
-<br/>
-
 ## Usage
 
 All methods are GET
-
-<br/>
 
 ### News
 
@@ -35,8 +31,6 @@ All methods are GET
 | /news  | US general news           |
 | /news/ | business US business news |
 | /news/ | health US health news     |
-
-<br/>
 
 ### Snapshot
 
@@ -49,8 +43,6 @@ All methods are GET
 | /snapshot/ | marketTime Market time information - close, open, time until close, time until open, etc |
 | /snapshot/ | marketSummary Market overview and summary                                                |
 
-<br/>
-
 ### Asset
 
 | Path                       | Description                                         |
@@ -62,8 +54,6 @@ All methods are GET
 | /asset/chart/[symbol]      | Get chart data of a stock/company                   |
 | /asset/darkpools/[symbols] | Get darkpools data of a stock/company               |
 
-<br/>
-
 ### Dark Pools
 
 | Path            | Description                                |
@@ -71,15 +61,11 @@ All methods are GET
 | /darkpools/     | list List of all known dark pools          |
 | /darkpools/data | All available dark pools data [LARGE SIZE] |
 
-<br/>
-
 ## Short Interest
 
 | Path           | Description                                    |
 | -------------- | ---------------------------------------------- |
 | /shortinterest | All available short interest data [LARGE SIZE] |
-
-<br/>
 
 ### Crypto
 
