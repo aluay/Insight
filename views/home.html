@@ -17,11 +17,12 @@
 			font-family: Consolas, monospace;
 		}
 		body {
-			max-width: 800px;
 			margin: 16px;
 		}
 		.tb {
 			border-collapse: collapse;
+			margin-bottom: 32px;
+			margin-top: 16px;
 		}
 		.tb th,
 		.tb td {
@@ -37,16 +38,24 @@
 		.description {
 			color: #ff7de9;
 		}
-		h1,
-		p {
+		h1 {
+			color: #fff;
+		}
+		h3 {
 			color: #d96629;
 			padding: 5px 0px;
+		}
+		.route {
+			display: inline;
+			color: #eb5368;
+			border-bottom: 1px solid #fff89e;
 		}
 	</style>
 	<body>
 		<div class="container">
 			<h1>Usage</h1>
-			<p>All methods are GET</p>
+			<h3>All methods are GET</h3>
+			<h3 class="route">News</h3>
 			<table class="tb">
 				<thead>
 					<th>Path</th>
@@ -55,68 +64,139 @@
 				<tbody>
 					<tr>
 						<td class="path">/news</td>
-						<td class="description">General U.S. news</td>
+						<td class="description">US general news</td>
 					</tr>
 					<tr>
 						<td class="path">/news/business</td>
-						<td class="description">Business U.S. news</td>
+						<td class="description">US business news</td>
 					</tr>
 					<tr>
 						<td class="path">/news/health</td>
-						<td class="description">Health U.S. news</td>
+						<td class="description">US health news</td>
 					</tr>
-					<tr>
-						<td class="path">/news/quote/[keyword]</td>
-						<td class="description">
-							Top 10 news articles about a company or a stock
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot</td>
-						<td class="description">Market snapshot</td>
-					</tr>
+				</tbody>
+			</table>
+			<h3 class="route">Snapshot</h3>
+			<table class="tb">
+				<thead>
+					<th>Path</th>
+					<th>Description</th>
+				</thead>
+				<tbody>
 					<tr>
 						<td class="path">/snapshot/gainers</td>
-						<td class="description">Top 10 daily market gainers</td>
+						<td class="description">Market gainers symbols</td>
 					</tr>
 					<tr>
 						<td class="path">/snapshot/losers</td>
-						<td class="description">Top 10 daily market losers</td>
+						<td class="description">Market losers symbols</td>
 					</tr>
 					<tr>
 						<td class="path">/snapshot/mostActive</td>
-						<td class="description">Top 10 most active symbols</td>
+						<td class="description">Market Most active symbols</td>
 					</tr>
 					<tr>
 						<td class="path">/snapshot/trendingSymbols</td>
-						<td class="description">Top 10 most trending symbols</td>
+						<td class="description">Market trending symbols</td>
 					</tr>
 					<tr>
 						<td class="path">/snapshot/marketTime</td>
-						<td class="description">Market time status information</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/marketSummary</td>
-						<td class="description">Market summary with indicators</td>
-					</tr>
-					<tr>
-						<td class="path">/insights/[symbol]</td>
-						<td class="description">Get insights of a company or a stock</td>
-					</tr>
-					<tr>
-						<td class="path">/search/[keyword]</td>
 						<td class="description">
-							Return top matching results for a company name or stock
+							Market time information - close, open, time until close, time
+							until open, etc
 						</td>
 					</tr>
 					<tr>
-						<td class="path">/crypto</td>
+						<td class="path">/snapshot/marketSummary</td>
+						<td class="description">Market overview and summary</td>
+					</tr>
+				</tbody>
+			</table>
+			<h3 class="route">Asset</h3>
+			<table class="tb">
+				<thead>
+					<th>Path</th>
+					<th>Description</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="path">/asset/news/[symbol]</td>
 						<td class="description">
-							Top 200 cryptos ordered in descending order by intraday marketcap
+							Get top 10 articles about a stock/company
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/asset/insights/[symbol]</td>
+						<td class="description">Get insights data about a stock/company</td>
+					</tr>
+					<tr>
+						<td class="path">/asset/summary/[symbol]</td>
+						<td class="description">
+							Get full summary about a stock/company [LARGE SIZE]
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/asset/options/[symbol]</td>
+						<td class="description">Get options data of a stock/company</td>
+					</tr>
+					<tr>
+						<td class="path">/asset/chart/[symbol]</td>
+						<td class="description">Get chart data of a stock/company</td>
+					</tr>
+					<tr>
+						<td class="path">/asset/darkpools/[symbols]</td>
+						<td class="description">Get darkpools data of a stock/company</td>
+					</tr>
+				</tbody>
+			</table>
+			<h3 class="route">Dark Pools</h3>
+			<table class="tb">
+				<thead>
+					<th>Path</th>
+					<th>Description</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="path">/darkpools/list</td>
+						<td class="description">List of all known dark pools</td>
+					</tr>
+					<tr>
+						<td class="path">/darkpools/data</td>
+						<td class="description">
+							All available dark pools data [LARGE SIZE]
 						</td>
 					</tr>
 				</tbody>
 			</table>
+			<h3 class="route">Short Interest</h3>
+			<table class="tb">
+				<thead>
+					<th>Path</th>
+					<th>Description</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="path">/shortinterest</td>
+						<td class="description">
+							All available short interest data [LARGE SIZE]
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<h3 class="route">Crypto</h3>
+			<h4>Under construction...</h4>
+			<!-- <table class="tb">
+				<thead>
+					<th>Path</th>
+					<th>Description</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="path">/crypto</td>
+						<td class="description"></td>
+					</tr>
+				</tbody>
+			</table> -->
 		</div>
 	</body>
 </html>

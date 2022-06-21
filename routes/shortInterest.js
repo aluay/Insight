@@ -3,10 +3,9 @@ const router = express.Router();
 
 import {
     getShortInterest,
-    // getDarkpoolsForAsset
 } from "../controllers/shortinterestController.js";
 
-//  This route will get darkpools data
+//  This route will get shortinterest data
 router.get("/", async (req, res) => {
     const result = await getShortInterest();
     res.send(result);
