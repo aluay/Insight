@@ -58,7 +58,7 @@ All methods are GET
 
 | Path            | Description                                |
 | --------------- | ------------------------------------------ |
-| /darkpools/     | list List of all known dark pools          |
+| /darkpools/     | List of all known dark pools               |
 | /darkpools/data | All available dark pools data [LARGE SIZE] |
 
 ## Short Interest
