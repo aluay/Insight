@@ -36,6 +36,18 @@ export async function summary(asset) {
     }
 }
 
+//   This route will get specific section of the summary 
+export async function section(asset, modules) {
+    const URL = `https://query2.finance.yahoo.com/v10/finance/quoteSummary/${asset}?modules=${modules}`;
+    const response = await fetch(URL);
+    if (response) {
+        const data = await response.json();
+        return data.quoteSummary.result[0];
+    } else {
+        return null;
+    }
+}
+
 //  Get options 
 export async function options(asset) {
     const URL = `https://query2.finance.yahoo.com/v7/finance/options/${asset}`;

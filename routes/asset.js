@@ -5,6 +5,7 @@ import {
     news,
     insights,
     summary,
+    section,
     options,
     chart,
     darkpools
@@ -25,6 +26,12 @@ router.get("/insights/:asset", async (req, res) => {
 //   This route will get full summary 
 router.get("/summary/:asset", async (req, res) => {
     const result = await summary(req.params.asset);
+    res.send(result);
+});
+
+//   This route will get specific section of the summary 
+router.get("/summary/:modules/:asset", async (req, res) => {
+    const result = await section(req.params.asset, req.params.modules);
     res.send(result);
 });
 
