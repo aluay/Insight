@@ -53,5 +53,12 @@ router.get("/darkpools/:asset", async (req, res) => {
     res.send(result);
 });
 
+//  This route will display a list of all available asset modules
+router.get("/modules/list", async (req, res) => {
+    res.sendFile('moduleslist.html', {
+        root: "./views"
+    });
+});
+
 //  Export the router
 export default router;

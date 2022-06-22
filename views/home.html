@@ -13,7 +13,6 @@
 		* {
 			box-sizing: border-box;
 			background-color: #18181a;
-			color: #f7f7f7;
 			font-family: Consolas, monospace;
 		}
 		body {
@@ -131,14 +130,14 @@
 					</tr>
 					<tr>
 						<td class="path">/asset/summary/[symbol]</td>
-						<td class="description">
-							Get full summary about a stock/company
-						</td>
+						<td class="description">Get full summary about a stock/company</td>
 					</tr>
 					<tr>
-						<td class="path">/asset/summary/modules/[symbol]</td>
+						<td class="path">/asset/summary/[modules]/[symbol]</td>
 						<td class="description">
-							Get specific summary modules about a stock/company
+							Get specific summary modules about a stock/company. Modules are
+							separated by a comma (example: assetProfile, recommendationTrend,
+							cashflowStatementHistory)
 						</td>
 					</tr>
 					<tr>
@@ -168,9 +167,7 @@
 					</tr>
 					<tr>
 						<td class="path">/darkpools/data</td>
-						<td class="description">
-							All available dark pools data
-						</td>
+						<td class="description">All available dark pools data</td>
 					</tr>
 				</tbody>
 			</table>
@@ -183,9 +180,7 @@
 				<tbody>
 					<tr>
 						<td class="path">/shortinterest</td>
-						<td class="description">
-							All available short interest data
-						</td>
+						<td class="description">All available short interest data</td>
 					</tr>
 				</tbody>
 			</table>
