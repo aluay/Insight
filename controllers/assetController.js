@@ -83,3 +83,15 @@ export async function darkpools(asset) {
         return null;
     }
 }
+
+//  Get borrow rates and availability data for a specific asset
+export async function hardToBorrow(asset) {
+    const URL = `https://iborrowdesk.com/api/ticker/${asset.toUpperCase()}`;
+    const response = await fetch(URL);
+    if (response) {
+        const data = await response.json();
+        return data.real_time;
+    } else {
+        return null;
+    }
+}

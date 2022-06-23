@@ -7,7 +7,7 @@ Financial API that provides the most up to date information about markets, stock
 - General news
 - Business news
 - Health news
-- Top articles about a stock/company
+- Top articles about an asset
 - Current markets
 - Market gainers
 - Market losers
@@ -45,14 +45,14 @@ All methods are GET
 
 ### Asset
 
-| Path                       | Description                                         |
-| -------------------------- | --------------------------------------------------- |
-| /asset/news/[symbol]       | Get top 10 articles about a stock/company           |
-| /asset/insights/[symbol]   | Get insights data about a stock/company             |
-| /asset/summary/[symbol]    | Get full summary about a stock/company [LARGE SIZE] |
-| /asset/options/[symbol]    | Get options data of a stock/company                 |
-| /asset/chart/[symbol]      | Get chart data of a stock/company                   |
-| /asset/darkpools/[symbols] | Get darkpools data of a stock/company               |
+| Path                       | Description                                  |
+| -------------------------- | -------------------------------------------- |
+| /asset/news/[symbol]       | Get top 10 articles about an asset           |
+| /asset/insights/[symbol]   | Get insights data about an asset             |
+| /asset/summary/[symbol]    | Get full summary about an asset [LARGE SIZE] |
+| /asset/options/[symbol]    | Get options data of an asset                 |
+| /asset/chart/[symbol]      | Get chart data of an asset                   |
+| /asset/darkpools/[symbols] | Get darkpools data of an asset               |
 
 ### Dark Pools
 

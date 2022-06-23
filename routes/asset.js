@@ -8,7 +8,8 @@ import {
     section,
     options,
     chart,
-    darkpools
+    darkpools,
+    hardToBorrow
 } from "../controllers/assetController.js";
 
 //  This route will get the top 10 articles related to the stock/company
@@ -58,6 +59,12 @@ router.get("/modules/list", async (req, res) => {
     res.sendFile('moduleslist.html', {
         root: "./views"
     });
+});
+
+//  This route will get borrow rates and stock availability
+router.get("/hardToBorrow/:asset", async (req, res) => {
+    const result = await hardToBorrow(req.params.asset);
+    res.send(result);
 });
 
 //  Export the router

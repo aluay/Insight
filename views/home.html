@@ -109,6 +109,40 @@
 						<td class="path">/snapshot/marketSummary</td>
 						<td class="description">Market overview and summary</td>
 					</tr>
+					<tr>
+						<td class="path">/snapshot/reverseRepo</td>
+						<td class="description">
+							Fed reverse repurchase agreement, also known as reverse repo
+							operations
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/snapshot/hardToBorrow</td>
+						<td class="description">
+							List of the most expensive stocks to borrows (excluding ADRs,
+							debt)
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/snapshot/sectors</td>
+						<td class="description">List of top sectors</td>
+					</tr>
+					<tr>
+						<td class="path">/snapshot/ipoCalendar</td>
+						<td class="description">
+							Get IPO calendar (Historical and future IPOs)
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/snapshot/economicCalendar</td>
+						<td class="description">
+							Get economic calendar and market-moving events
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/snapshot/dailyInsiderTransactions</td>
+						<td class="description">Get daily insider transactions</td>
+					</tr>
 				</tbody>
 			</table>
 			<h3 class="route">Asset</h3>
@@ -120,37 +154,41 @@
 				<tbody>
 					<tr>
 						<td class="path">/asset/news/[symbol]</td>
-						<td class="description">
-							Get top 10 articles about a stock/company
-						</td>
+						<td class="description">Get top 10 articles about an asset</td>
 					</tr>
 					<tr>
 						<td class="path">/asset/insights/[symbol]</td>
-						<td class="description">Get insights data about a stock/company</td>
+						<td class="description">Get insights data about an asset</td>
 					</tr>
 					<tr>
 						<td class="path">/asset/summary/[symbol]</td>
-						<td class="description">Get full summary about a stock/company</td>
+						<td class="description">Get full summary about an asset</td>
 					</tr>
 					<tr>
 						<td class="path">/asset/summary/[modules]/[symbol]</td>
 						<td class="description">
-							Get specific summary modules about a stock/company. Modules are
-							separated by a comma (example: assetProfile, recommendationTrend,
+							Get specific summary modules about an asset. Modules are separated
+							by a comma (example: assetProfile, recommendationTrend,
 							cashflowStatementHistory)
 						</td>
 					</tr>
 					<tr>
 						<td class="path">/asset/options/[symbol]</td>
-						<td class="description">Get options data of a stock/company</td>
+						<td class="description">Get options data of an asset</td>
 					</tr>
 					<tr>
 						<td class="path">/asset/chart/[symbol]</td>
-						<td class="description">Get chart data of a stock/company</td>
+						<td class="description">Get chart data of an asset</td>
 					</tr>
 					<tr>
 						<td class="path">/asset/darkpools/[symbols]</td>
-						<td class="description">Get darkpools data of a stock/company</td>
+						<td class="description">Get darkpools data of an asset</td>
+					</tr>
+					<tr>
+						<td class="path">/asset/hardToBorrow/[symbols]</td>
+						<td class="description">
+							Get borrow rates and availability data for a specific asset
+						</td>
 					</tr>
 				</tbody>
 			</table>
