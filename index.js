@@ -4,6 +4,7 @@ import express from "express";
 import asset from "./routes/asset.js"
 import crypto from "./routes/crypto.js"
 import news from "./routes/news.js";
+import search from "./routes/search.js";
 import snapshot from "./routes/snapshot.js";
 import darkPools from "./routes/darkPools.js";
 import shortInterest from "./routes/shortInterest.js";
@@ -22,6 +23,7 @@ app.get("/", async (req, res) => {
 app.use("/asset", asset); //   Asset route
 app.use("/crypto", crypto); // Crypto route
 app.use("/news", news); //  News route
+app.use("/search", search); //  Search assets
 app.use("/snapshot", snapshot); //  snapshot route
 app.use("/darkpools", darkPools); //    Dark pools data
 app.use("/shortinterest", shortInterest); //    Short interest data

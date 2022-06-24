@@ -21,7 +21,7 @@ async function crypto() {
     if (response) {
         const data = await response.json();
         if (data.finance.result[0].quotes) {
-            return data.finance.result[0].quotes
+            return data.finance.result[0].quotes[0]
         } else {
             return null;
         }
