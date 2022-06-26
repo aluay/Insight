@@ -7,7 +7,7 @@ Financial API that provides the most up to date information about markets, stock
 - General news
 - Business news
 - Health news
-- Top articles about an asset
+- Top articles about a stock
 - Current markets
 - Market gainers
 - Market losers
@@ -43,16 +43,16 @@ All methods are GET
 | /snapshot/ | marketTime Market time information - close, open, time until close, time until open, etc |
 | /snapshot/ | marketSummary Market overview and summary                                                |
 
-### Asset
+### stock
 
-| Path                       | Description                                  |
-| -------------------------- | -------------------------------------------- |
-| /asset/news/[symbol]       | Get top 10 articles about an asset           |
-| /asset/insights/[symbol]   | Get insights data about an asset             |
-| /asset/summary/[symbol]    | Get full summary about an asset [LARGE SIZE] |
-| /asset/options/[symbol]    | Get options data of an asset                 |
-| /asset/chart/[symbol]      | Get chart data of an asset                   |
-| /asset/darkpools/[symbols] | Get darkpools data of an asset               |
+| Path                       | Description                                 |
+| -------------------------- | ------------------------------------------- |
+| /stock/news/[symbol]       | Get top 10 articles about a stock           |
+| /stock/insights/[symbol]   | Get insights data about a stock             |
+| /stock/summary/[symbol]    | Get full summary about a stock [LARGE SIZE] |
+| /stock/options/[symbol]    | Get options data of a stock                 |
+| /stock/chart/[symbol]      | Get chart data of a stock                   |
+| /stock/darkpools/[symbols] | Get darkpools data of a stock               |
 
 ### Dark Pools
 

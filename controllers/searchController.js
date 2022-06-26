@@ -7,7 +7,7 @@ export async function search(asset) {
     if (response) {
         const data = await response.json();
         if (data) {
-            return data;
+            return data.quotes[0];
         } else {
             return null;
         }

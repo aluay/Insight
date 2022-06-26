@@ -1,7 +1,7 @@
 import express from "express";
 
 //	Import routes
-import asset from "./routes/asset.js"
+import stock from "./routes/stock.js"
 import crypto from "./routes/crypto.js"
 import news from "./routes/news.js";
 import search from "./routes/search.js";
@@ -20,10 +20,10 @@ app.get("/", async (req, res) => {
 });
 
 //	Routes
-app.use("/asset", asset); //   Asset route
+app.use("/stock", stock); //   Stock route
 app.use("/crypto", crypto); // Crypto route
 app.use("/news", news); //  News route
-//app.use("/search", search); //  Search assets
+app.use("/search", search); //  Search stocks
 app.use("/snapshot", snapshot); //  snapshot route
 app.use("/darkpools", darkPools); //    Dark pools data
 app.use("/shortinterest", shortInterest); //    Short interest data

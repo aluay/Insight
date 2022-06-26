@@ -12,9 +12,9 @@ export async function getShortInterest() {
     }
 }
 
-//  Get short interest data for a specific asset
-export async function getShortInterestForAsset(asset) {
-    const URL = `https://www.stockgrid.io/get_dark_pool_individual_data?ticker=${asset.toUpperCase()}`;
+//  Get short interest data for a specific stock
+export async function getShortInterestForstock(stock) {
+    const URL = `https://www.stockgrid.io/get_dark_pool_individual_data?ticker=${stock.toUpperCase()}`;
     const response = await fetch(URL);
     if (response) {
         const data = await response.json();
