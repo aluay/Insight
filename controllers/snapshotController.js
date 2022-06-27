@@ -180,7 +180,7 @@ export async function getReverseRepo() {
     if (response) {
         const data = await response.json();
         if (data) {
-            return data.repo.operations[0]
+            return data;
         } else {
             return null
         }

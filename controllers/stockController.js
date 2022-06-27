@@ -37,12 +37,12 @@ export async function summary(stock) {
 }
 
 //   This route will get specific section of the summary 
-export async function section(stock, modules) {
+export async function modules(stock, modules) {
     const URL = `https://query2.finance.yahoo.com/v10/finance/quoteSummary/${stock}?modules=${modules}`;
     const response = await fetch(URL);
     if (response) {
         const data = await response.json();
-        return data.quoteSummary.result[0];
+        return data;
     } else {
         return null;
     }
@@ -54,7 +54,7 @@ export async function options(stock) {
     const response = await fetch(URL);
     if (response) {
         const data = await response.json();
-        return data.optionChain.result[0];
+        return data;
     } else {
         return null;
     }
@@ -66,7 +66,7 @@ export async function chart(stock) {
     const response = await fetch(URL);
     if (response) {
         const data = await response.json();
-        return data.chart.result[0];
+        return data;
     } else {
         return null;
     }
@@ -85,12 +85,12 @@ export async function darkpools(stock) {
 }
 
 //  Get borrow rates and availability data for a specific stock
-export async function hardToBorrow(stock) {
+export async function borrow(stock) {
     const URL = `https://iborrowdesk.com/api/ticker/${stock.toUpperCase()}`;
     const response = await fetch(URL);
     if (response) {
         const data = await response.json();
-        return data.real_time;
+        return data;
     } else {
         return null;
     }

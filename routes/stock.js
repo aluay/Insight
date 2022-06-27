@@ -5,11 +5,11 @@ import {
     news,
     insights,
     summary,
-    section,
+    modules,
     options,
     chart,
     darkpools,
-    hardToBorrow
+    borrow
 } from "../controllers/stockController.js";
 
 import {
@@ -73,12 +73,12 @@ router.get("/summary/:stock", async (req, res) => {
     }
 });
 
-//   This route will get specific section of the summary 
+//   This route will get specific modules from the summary 
 router.get("/summary/:modules/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await section(searchStock.symbol);
+            const result = await modules(searchStock.symbol,req.params.modules);
             res.send(result);
         } else {
             res.send({
@@ -150,11 +150,11 @@ router.get("/darkpools/:stock", async (req, res) => {
 });
 
 //  This route will get borrow rates and stock availability
-router.get("/hardToBorrow/:stock", async (req, res) => {
+router.get("/borrow/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await hardToBorrow(searchStock.symbol);
+            const result = await borrow(searchStock.symbol);
             res.send(result);
         } else {
             res.send({
