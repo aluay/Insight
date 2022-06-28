@@ -13,7 +13,10 @@ import {
     getTopSectors,
     getIPOCalendar,
     getEconomicCalendar,
-    getDailyInsiderTransactions
+    getUpcomingEarnings,
+    getDailyInsiderTransactions,
+    getAllPoliticsTrades,
+    getPoliticianTrades
 } from "../controllers/snapshotController.js"
 
 //  Get market snapshot
@@ -101,9 +104,31 @@ router.get("/economicCalendar", async (req, res) => {
     res.send(result);
 });
 
+//  Get upcoming earnings
+router.get("/upcomingEarnings", async (req, res) => {
+    const result = await getUpcomingEarnings();
+    res.send(result);
+});
+
 //  Get daily insider transactions
 router.get("/dailyInsiderTransactions", async (req, res) => {
     const result = await getDailyInsiderTransactions();
+    res.send(result);
+});
+
+//  Get politicians stock trades
+router.get("/politics/trades/:pageNum?", async (req, res) => {
+    let pageNum = req.params.pageNum;
+    if(!pageNum){
+        pageNum = 1;
+    }
+    const result = await getAllPoliticsTrades(pageNum);
+    res.send(result);
+});
+
+//  Get 100 recent stock trades of a politician
+router.get("/politics/trades/:politicianID", async (req, res) => {
+    const result = await getPoliticianTrades(req.params.politicianID);
     res.send(result);
 });
 

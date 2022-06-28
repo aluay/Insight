@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import HtmlTableToJson from "html-table-to-json";
 
 //  Get a list of the top gainers
 export async function getGainers() {
@@ -261,6 +262,39 @@ export async function getEconomicCalendar() {
     }
 }
 
+//  Get upcoming earnings
+export async function getUpcomingEarnings() {
+    const URL =
+        "https://seekingalpha.com/earnings/earnings-calendar";
+
+    const response = await fetch(URL);
+    if (response) {
+        const data = await response.text();
+        const upcomingEarnings = []
+        if (data) {
+            const jsonTable = HtmlTableToJson.parse(data)
+            for (let i = 0; i < jsonTable._results[0].length; i++) {
+                if (jsonTable._results[0][i].Symbol &&
+                    jsonTable._results[0][i].Name &&
+                    jsonTable._results[0][i]["Release Date"] &&
+                    jsonTable._results[0][i]["Release Time"]) {
+                    upcomingEarnings.push({
+                        Symbol: jsonTable._results[0][i].Symbol,
+                        Name: jsonTable._results[0][i].Name,
+                        'Release Date': jsonTable._results[0][i]["Release Date"],
+                        'Release Time': jsonTable._results[0][i]["Release Time"]
+                    })
+                }
+            }
+            return upcomingEarnings;
+        } else {
+            return null
+        }
+    } else {
+        return "Something went wrong.";
+    }
+}
+
 //  Get daily insider transactions
 export async function getDailyInsiderTransactions() {
     const URL =
@@ -271,6 +305,40 @@ export async function getDailyInsiderTransactions() {
         const data = await response.json();
         if (data) {
             return data.analysts
+        } else {
+            return null
+        }
+    } else {
+        return "Something went wrong.";
+    }
+}
+
+//  Get politicians stock trades
+export async function getAllPoliticsTrades(pageNum) {
+    const URL = `https://bff.capitoltrades.com/trades?page=${pageNum}&pageSize=100`
+    const response = await fetch(URL);
+    if (response) {
+        const data = await response.json();
+        if (data) {
+            return data
+        } else {
+            return null
+        }
+    } else {
+        return "Something went wrong.";
+    }
+}
+
+//  TODO
+//  Find an easy way to get politicianID
+//  Get 100 recent stock trades of a politician
+export async function getPoliticianTrades(politicianID) {
+    const URL = `https://bff.capitoltrades.com/issuers?politician=${politicianID}&txDate=all&pageSize=100`
+    const response = await fetch(URL);
+    if (response) {
+        const data = await response.json();
+        if (data) {
+            return data
         } else {
             return null
         }

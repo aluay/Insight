@@ -26,6 +26,7 @@
   "homepage": "https://github.com/aluay/Insight#readme",
   "dependencies": {
     "express": "^4.18.1",
+    "html-table-to-json": "^1.0.0",
     "moment": "^2.29.3",
     "node-fetch": "^3.2.6",
     "xml2js": "^0.4.23"

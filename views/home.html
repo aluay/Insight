@@ -113,7 +113,7 @@
 						<td class="path">/snapshot/reverseRepo</td>
 						<td class="description">
 							Fed reverse repurchase agreement, also known as reverse repo
-							operations
+							operations. Noly available when markets are open.
 						</td>
 					</tr>
 					<tr>
@@ -140,8 +140,22 @@
 						</td>
 					</tr>
 					<tr>
+						<td class="path">/snapshot/upcomingEarnings</td>
+						<td class="description">
+							Get upcoming earnings
+						</td>
+					</tr>
+					<tr>
 						<td class="path">/snapshot/dailyInsiderTransactions</td>
 						<td class="description">Get daily insider transactions</td>
+					</tr>
+					<tr>
+						<td class="path">/snapshot/politics/trades/[Page number]</td>
+						<td class="description">Get politicians stock trades. If no page number is passed, the API will return the first page only. The list is large, so the max per page is 100 items.</td>
+					</tr>
+					<tr>
+						<td class="path">/politics/trades/[Politician ID]</td>
+						<td class="description">Get 100 recent stock trades of a politician</td>
 					</tr>
 				</tbody>
 			</table>
@@ -217,8 +231,16 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td class="path">/shortinterest</td>
+						<td class="path">/shortinterest/all</td>
 						<td class="description">All available short interest data</td>
+					</tr>
+					<tr>
+						<td class="path">/shortinterest/highest</td>
+						<td class="description">High short interest stocks</td>
+					</tr>
+					<tr>
+						<td class="path">/shortinterest/[symbol]</td>
+						<td class="description">Short interest data for a specific stock</td>
 					</tr>
 				</tbody>
 			</table>
