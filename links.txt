@@ -6,3 +6,19 @@ https://www.barrons.com/market-data/api/millstone?ticker=tsla&PAGE=%7B%22renderT
 
 News per stock symbol
 https://www.tipranks.com/api/stocks/getNews/?ticker=TSLA
+
+
+Interesting website
+https://wallmine.com/nasdaq/tsla
+
+
+***TODO***
+1. Add politics trading
+    a. for all politicians
+    b. for individual politicians
+
+    Links
+    https://www.capitoltrades.com/politicians
+    https://senatestockwatcher.com/
+    https://housestockwatcher.com/
+
