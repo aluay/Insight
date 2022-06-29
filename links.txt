@@ -1,5 +1,9 @@
 ***TODO***
-1. Sentiment analysis
+1. Politics finance data
+    Links
+    https://www.fec.gov/data/
+
+2. Sentiment analysis
     Link:
     https://api.finbrain.tech/v0/sentiments/tsla
 
