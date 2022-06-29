@@ -16,7 +16,9 @@ import {
     getUpcomingEarnings,
     getDailyInsiderTransactions,
     getAllPoliticsTrades,
-    getPoliticianTrades
+    getPoliticianTrades,
+    getSenateTrades,
+    getHouseTrades
 } from "../controllers/snapshotController.js"
 
 //  Get market snapshot
@@ -117,7 +119,7 @@ router.get("/dailyInsiderTransactions", async (req, res) => {
 });
 
 //  Get politicians stock trades
-router.get("/politics/trades/:pageNum?", async (req, res) => {
+router.get("/politics/trades/all/:pageNum?", async (req, res) => {
     let pageNum = req.params.pageNum;
     if(!pageNum){
         pageNum = 1;
@@ -127,8 +129,20 @@ router.get("/politics/trades/:pageNum?", async (req, res) => {
 });
 
 //  Get 100 recent stock trades of a politician
-router.get("/politics/trades/:politicianID", async (req, res) => {
+router.get("/politics/trades/individual/:politicianID", async (req, res) => {
     const result = await getPoliticianTrades(req.params.politicianID);
+    res.send(result);
+});
+
+//  Get all trades for the senate members
+router.get("/politics/trades/senate", async (req, res) => {
+    const result = await getSenateTrades();
+    res.send(result);
+});
+
+//  Get all trades for the house of representatives members
+router.get("/politics/trades/house", async (req, res) => {
+    const result = await getHouseTrades();
     res.send(result);
 });
 

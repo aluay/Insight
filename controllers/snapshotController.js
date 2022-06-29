@@ -346,3 +346,38 @@ export async function getPoliticianTrades(politicianID) {
         return "Something went wrong.";
     }
 }
+
+
+//  Get all trades for the senate members
+export async function getSenateTrades() {
+    const URL = `https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions.json`;
+    const response = await fetch(URL);
+    if (response) {
+        const data = await response.json();
+        if (data) {
+            return data;
+        }
+        else {
+            return null;
+        }
+    } else {
+        return "Something went wrong.";
+    }
+}
+
+//  Get all trades for the house of representatives members
+export async function getHouseTrades() {
+    const URL = `https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_transactions.json`;
+    const response = await fetch(URL);
+    if (response) {
+        const data = await response.json();
+        if (data) {
+            return data;
+        }
+        else {
+            return null;
+        }
+    } else {
+        return "Something went wrong.";
+    }
+}

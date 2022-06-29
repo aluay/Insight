@@ -148,7 +148,7 @@
 						<td class="description">Get daily insider transactions</td>
 					</tr>
 					<tr>
-						<td class="path">/snapshot/politics/trades/[Page number]</td>
+						<td class="path">/snapshot/politics/trades/all/[Page number]</td>
 						<td class="description">
 							Get politicians stock trades. If no page number is passed, the API
 							will return the first page only. The list is large, so the max per
@@ -156,9 +156,21 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="path">/politics/trades/[Politician ID]</td>
+						<td class="path">/politics/trades/individual/:politicianID</td>
 						<td class="description">
 							Get 100 recent stock trades of a politician
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/politics/trades/senate</td>
+						<td class="description">
+							Get all trades for the senate members
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/politics/trades/house</td>
+						<td class="description">
+							Get all trades for the house of representatives members
 						</td>
 					</tr>
 				</tbody>
