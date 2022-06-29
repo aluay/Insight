@@ -9,7 +9,8 @@ import {
     options,
     chart,
     darkpools,
-    borrow
+    borrow,
+    shortInterest
 } from "../controllers/stockController.js";
 
 import {
@@ -78,7 +79,7 @@ router.get("/summary/:modules/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await modules(searchStock.symbol,req.params.modules);
+            const result = await modules(searchStock.symbol, req.params.modules);
             res.send(result);
         } else {
             res.send({
@@ -166,6 +167,13 @@ router.get("/borrow/:stock", async (req, res) => {
             Error: "Symbol not found"
         })
     }
+});
+
+//  This route will get shortinterest data for a specific stock
+router.get("/shortinterest/:stock", async (req, res) => {
+    const searchStock = await search(req.params.stock);
+    const result = await shortInterest(searchStock.symbol);
+    res.send(result);
 });
 
 //  This route will display a list of all available stock modules
