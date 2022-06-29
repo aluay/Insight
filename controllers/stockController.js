@@ -2,11 +2,24 @@ import fetch from "node-fetch";
 
 //  Get the top 10 articles related to the stock/company
 export async function news(stock) {
-    const URL = `https://query2.finance.yahoo.com/v1/finance/search?q=${stock}&lang=en-US&region=US&quotesCount=6&newsCount=10&listsCount=2&enableFuzzyQuery=false&quotesQueryId=tss_match_phrase_query&multiQuoteQueryId=multi_quote_single_token_query&newsQueryId=news_cie_vespa&enableCb=true&enableNavLinks=true&enableEnhancedTrivialQuery=true`;
+    let news = [];
+    const URL = `https://www.barrons.com/market-data/api/millstone?ticker=${stock}&PAGE={%22renderTab%22:%22%22,%22assetType%22:%22stock%22,%22analyticsValue%22:%22stockoverview%22}`;
     const response = await fetch(URL);
     if (response) {
         const data = await response.json();
-        return data.news;
+        if (data) {
+            for (let i = 0; i < data.props.newsCard.tabs[1].blocks[0].blocks.length; i++) {
+                news.push({
+                    title: data.props.newsCard.tabs[1].blocks[0].blocks[i].headline,
+                    summary: data.props.newsCard.tabs[1].blocks[0].blocks[i].summary,
+                    url: data.props.newsCard.tabs[1].blocks[0].blocks[i].url,
+                    pubTime: data.props.newsCard.tabs[1].blocks[0].blocks[i].timestampUtc.formatted,
+                    media: data.props.newsCard.tabs[1].blocks[0].blocks[i].images[0],
+                    source: data.props.newsCard.tabs[1].blocks[0].blocks[i].provider
+                })
+            }
+        }
+        return news;
     } else {
         return null;
     }
