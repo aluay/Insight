@@ -120,3 +120,17 @@ export async function shortInterest(stock) {
         return null;
     }
 }
+
+//  This route will get bid/ask data for a specific stock
+export async function book(stock) {
+    const URL = `https://www.cboe.com/json/bzx/book/${stock.toUpperCase()}`;
+    const response = await fetch(URL, {
+        "referrer": "https://www.cboe.com",
+    });
+    if (response) {
+        const data = await response.json();
+        return data;
+    } else {
+        return null;
+    }
+}

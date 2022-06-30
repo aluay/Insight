@@ -10,7 +10,8 @@ import {
     chart,
     darkpools,
     borrow,
-    shortInterest
+    shortInterest,
+    book
 } from "../controllers/stockController.js";
 
 import {
@@ -173,6 +174,13 @@ router.get("/borrow/:stock", async (req, res) => {
 router.get("/shortinterest/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     const result = await shortInterest(searchStock.symbol);
+    res.send(result);
+});
+
+//  This route will get bid/ask data for a specific stock
+router.get("/book/:stock", async (req, res) => {
+    const searchStock = await search(req.params.stock);
+    const result = await book(searchStock.symbol);
     res.send(result);
 });
 
