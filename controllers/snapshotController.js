@@ -400,24 +400,67 @@ export async function getGovSpendingByAgency() {
     }
 }
 
-/*
-    INVESTIGATE THIS
-    IT WON'T FETCH MORE THAN 10 ITEMS
-    IT SHOULD FETCH OVER 2000 ITEMS
-*/
-//  Get US government spending by agency
-export async function getGovSpendingByFederalAccount() {
+//  Get US government spending by federal accounts
+export async function getGovSpendingByFederalAccounts(pageNum) {
     const URL = `https://api.usaspending.gov/api/v2/federal_accounts/`;
     const response = await fetch(URL, {
-        method: "POST",
-        limit: 50,
-        page: 1
-    });
+    "headers": {
+        "Content-Type": "application/json",
+    },
+    "body": `{\"sort\":{\"field\":\"budgetary_resources\",\"direction\":\"desc\"},\"page\":${pageNum},\"limit\":50,\"filters\":{\"fy\":\"2022\"}}`,
+    "method": "POST",
+});
     if (response) {
         let data = await response.json();
         if (data) {
             let spending = ({
                 description: "US government spending by federal accounts",
+                ...data
+            })
+            return spending;
+        } else {
+            return null;
+        }
+    } else {
+        return "Something went wrong.";
+    }
+}
+
+//  Get US government spending by state
+export async function getGovSpendingByState() {
+    const URL = `https://api.usaspending.gov/api/v2/recipient/state/`;
+    const response = await fetch(URL);
+    if (response) {
+        let data = await response.json();
+        if (data) {
+            let spending = ({
+                description: "US government spending by state",
+                ...data
+            })
+            return spending;
+        } else {
+            return null;
+        }
+    } else {
+        return "Something went wrong.";
+    }
+}
+
+//  Get US government spending by federal accounts
+export async function getGovSpendingByRecipient(pageNum) {
+    const URL = `https://api.usaspending.gov/api/v2/recipient/`;
+    const response = await fetch(URL, {
+    "headers": {
+        "Content-Type": "application/json",
+    },
+    "body": "{\"order\":\"desc\",\"sort\":\"amount\",\"page\":1,\"limit\":50,\"award_type\":\"all\"}",
+    "method": "POST",
+});
+    if (response) {
+        let data = await response.json();
+        if (data) {
+            let spending = ({
+                description: "US government spending by recipient",
                 ...data
             })
             return spending;

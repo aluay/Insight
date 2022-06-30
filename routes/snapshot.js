@@ -20,7 +20,9 @@ import {
     getSenateTrades,
     getHouseTrades,
     getGovSpendingByAgency,
-    getGovSpendingByFederalAccount
+    getGovSpendingByFederalAccounts,
+    getGovSpendingByState,
+    getGovSpendingByRecipient
 } from "../controllers/snapshotController.js"
 
 //  Get market snapshot
@@ -155,8 +157,28 @@ router.get("/gov/spending/agency", async (req, res) => {
 });
 
 //  Get US government spending by federal accounts
-router.get("/gov/spending/federalAccounts", async (req, res) => {
-    const result = await getGovSpendingByFederalAccount();
+router.get("/gov/spending/federalAccounts/:pageNum?", async (req, res) => {
+    let pageNum = req.params.pageNum;
+    if (!pageNum) {
+        pageNum = 1;
+    }
+    const result = await getGovSpendingByFederalAccounts(pageNum);
+    res.send(result);
+});
+
+//  Get US government spending by state
+router.get("/gov/spending/state", async (req, res) => {
+    const result = await getGovSpendingByState();
+    res.send(result);
+});
+
+//  Get US government spending by recipient
+router.get("/gov/spending/recipient/:pageNum?", async (req, res) => {
+    let pageNum = req.params.pageNum;
+    if (!pageNum) {
+        pageNum = 1;
+    }
+    const result = await getGovSpendingByRecipient(pageNum);
     res.send(result);
 });
 

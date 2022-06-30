@@ -156,7 +156,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="path">/snapshot/gov/trades/individual/:politicianID</td>
+						<td class="path">/snapshot/gov/trades/individual/[politicianID]</td>
 						<td class="description">
 							Get 100 recent stock trades of a politician
 						</td>
@@ -169,6 +169,34 @@
 						<td class="path">/snapshot/gov/trades/house</td>
 						<td class="description">
 							Get all trades for the house of representatives members
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/snapshot/gov/spending/agency</td>
+						<td class="description">
+							Get US government spending by agency
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/snapshot/gov/spending/federalaccount/[Page number]</td>
+						<td class="description">
+							Get US government spending by federal account. If no page number is passed, the API
+							will return the first page only. The list is large, so the max per
+							page is 50 items.
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/snapshot/gov/spending/state</td>
+						<td class="description">
+							Get US government spending by state
+						</td>
+					</tr>
+					<tr>
+						<td class="path">/snapshot/gov/spending/recipient/[Page number]</td>
+						<td class="description">
+							Get US government spending by recipient. If no page number is passed, the API
+							will return the first page only. The list is large, so the max per
+							page is 50 items.
 						</td>
 					</tr>
 				</tbody>
