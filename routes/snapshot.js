@@ -15,10 +15,12 @@ import {
     getEconomicCalendar,
     getUpcomingEarnings,
     getDailyInsiderTransactions,
-    getAllPoliticsTrades,
+    getAllTrades,
     getPoliticianTrades,
     getSenateTrades,
-    getHouseTrades
+    getHouseTrades,
+    getGovSpendingByAgency,
+    getGovSpendingByFederalAccount
 } from "../controllers/snapshotController.js"
 
 //  Get market snapshot
@@ -119,30 +121,42 @@ router.get("/dailyInsiderTransactions", async (req, res) => {
 });
 
 //  Get politicians stock trades
-router.get("/politics/trades/all/:pageNum?", async (req, res) => {
+router.get("/gov/trades/all/:pageNum?", async (req, res) => {
     let pageNum = req.params.pageNum;
-    if(!pageNum){
+    if (!pageNum) {
         pageNum = 1;
     }
-    const result = await getAllPoliticsTrades(pageNum);
+    const result = await getAllTrades(pageNum);
     res.send(result);
 });
 
 //  Get 100 recent stock trades of a politician
-router.get("/politics/trades/individual/:politicianID", async (req, res) => {
+router.get("/gov/trades/individual/:politicianID", async (req, res) => {
     const result = await getPoliticianTrades(req.params.politicianID);
     res.send(result);
 });
 
 //  Get all trades for the senate members
-router.get("/politics/trades/senate", async (req, res) => {
+router.get("/gov/trades/senate", async (req, res) => {
     const result = await getSenateTrades();
     res.send(result);
 });
 
 //  Get all trades for the house of representatives members
-router.get("/politics/trades/house", async (req, res) => {
+router.get("/gov/trades/house", async (req, res) => {
     const result = await getHouseTrades();
+    res.send(result);
+});
+
+//  Get US government spending by agency
+router.get("/gov/spending/agency", async (req, res) => {
+    const result = await getGovSpendingByAgency();
+    res.send(result);
+});
+
+//  Get US government spending by federal accounts
+router.get("/gov/spending/federalAccounts", async (req, res) => {
+    const result = await getGovSpendingByFederalAccount();
     res.send(result);
 });
 

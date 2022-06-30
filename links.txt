@@ -1,9 +1,25 @@
 ***TODO***
-1. Politics finance data
-    Links
-    https://www.fec.gov/data/
 
-2. Sentiment analysis
-    Link:
-    https://api.finbrain.tech/v0/sentiments/tsla
+Finish up the government spending route
+https://www.usaspending.gov/
 
+get more information regarding government spending sorted by the slugs below
+
+spending by agency = done
+
+spending by federal account = in progress
+
+spending by state = not started
+spending by recipient = not started
+spending by covid-19 spending = not started
+
+--------------------------------------------------------------
+
+**EXPLORE**
+
+https://api.finbrain.tech/v0
+Get sentiments:
+https://api.finbrain.tech/v0/sentiments/tsla
+
+Get technical summary:
+https://api.finbrain.tech/v0/technicalSummary/tsla

@@ -314,7 +314,7 @@ export async function getDailyInsiderTransactions() {
 }
 
 //  Get politicians stock trades
-export async function getAllPoliticsTrades(pageNum) {
+export async function getAllTrades(pageNum) {
     const URL = `https://bff.capitoltrades.com/trades?page=${pageNum}&pageSize=100`
     const response = await fetch(URL);
     if (response) {
@@ -356,8 +356,7 @@ export async function getSenateTrades() {
         const data = await response.json();
         if (data) {
             return data;
-        }
-        else {
+        } else {
             return null;
         }
     } else {
@@ -373,8 +372,56 @@ export async function getHouseTrades() {
         const data = await response.json();
         if (data) {
             return data;
+        } else {
+            return null;
         }
-        else {
+    } else {
+        return "Something went wrong.";
+    }
+}
+
+//  Get US government spending by agency
+export async function getGovSpendingByAgency() {
+    const URL = `https://api.usaspending.gov/api/v2/references/toptier_agencies/?sort=percentage_of_total_budget_authority&order=desc`;
+    const response = await fetch(URL);
+    if (response) {
+        let data = await response.json();
+        if (data) {
+            let spending = ({
+                description: "US government spending by agency",
+                ...data
+            })
+            return spending;
+        } else {
+            return null;
+        }
+    } else {
+        return "Something went wrong.";
+    }
+}
+
+/*
+    INVESTIGATE THIS
+    IT WON'T FETCH MORE THAN 10 ITEMS
+    IT SHOULD FETCH OVER 2000 ITEMS
+*/
+//  Get US government spending by agency
+export async function getGovSpendingByFederalAccount() {
+    const URL = `https://api.usaspending.gov/api/v2/federal_accounts/`;
+    const response = await fetch(URL, {
+        method: "POST",
+        limit: 50,
+        page: 1
+    });
+    if (response) {
+        let data = await response.json();
+        if (data) {
+            let spending = ({
+                description: "US government spending by federal accounts",
+                ...data
+            })
+            return spending;
+        } else {
             return null;
         }
     } else {
