@@ -1,299 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>
-			Insights API - Get general news, business news, health news, current
-			markets, company info, and more.
-		</title>
-	</head>
-	<style>
-		* {
-			box-sizing: border-box;
-			background-color: #18181a;
-			font-family: Consolas, monospace;
-		}
-		body {
-			margin: 16px;
-		}
-		.tb {
-			border-collapse: collapse;
-			margin-bottom: 32px;
-			margin-top: 16px;
-		}
-		.tb th,
-		.tb td {
-			padding: 5px;
-		}
-		.tb th {
-			color: #86de74;
-			text-align: left;
-		}
-		.path {
-			color: #75bfff;
-		}
-		.description {
-			color: #ff7de9;
-		}
-		h1 {
-			color: #fff;
-		}
-		h3 {
-			color: #d96629;
-			padding: 5px 0px;
-		}
-		.route {
-			display: inline;
-			color: #eb5368;
-			border-bottom: 1px solid #fff89e;
-		}
-	</style>
-	<body>
-		<div class="container">
-			<h1>Usage</h1>
-			<h3>All methods are GET</h3>
-			<h3 class="route">News</h3>
-			<table class="tb">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Insights API - Get general news, business news, health news, current
+      markets, company info, and more.
+    </title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+	  color: #262730;
+      font-family: Consolas, monospace;
+	  margin: 0;
+	  padding: 0
+    }
+	body{
+		padding-left: 16px;
+	}
+	h1{
+		color: #D33F49;
+	}
+	h3{
+		color: #3E92CC;
+		margin: 20px 0px 5px 0px;
+	}
+    th {
+      padding: 8px 0px;
+      text-align: left;
+      font-size: 12px;
+      color: #77BA99;
+      text-transform: uppercase;
+    }
+    td {
+      padding: 8px 0px;
+      text-align: left;
+      vertical-align: middle;
+      font-size: 12px;
+      border-bottom: thin solid #e1e1e1;
+    }
+    .description {
+      padding-left: 20px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Usage</h1>
+      <h3>All methods are GET</h3>
+      <h3 class="route">News</h3>
+      <table class="tb">
+        <thead>
+          <th>Path</th>
+          <th class="description">Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="path">/news</td>
+            <td class="description">Get US general news</td>
+          </tr>
+          <tr>
+            <td class="path">/news/business</td>
+            <td class="description">Get US business news</td>
+          </tr>
+          <tr>
+            <td class="path">/news/health</td>
+            <td class="description">Get US health news</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="route">Snapshot</h3>
+      <table class="tb">
+        <thead>
+          <th>Path</th>
+          <th class="description">Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="path">/snapshot/gainers</td>
+            <td class="description">Get market gainers</td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/losers</td>
+            <td class="description">Get market losers</td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/mostActive</td>
+            <td class="description">Get arket most active symbols</td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/trendingSymbols</td>
+            <td class="description">Get market trending symbols</td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/marketTime</td>
+            <td class="description">
+              Get market time - close, open, time until close, time until open,
+              etc
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/marketSummary</td>
+            <td class="description">Get market overview and summary</td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/reverseRepo</td>
+            <td class="description">
+              Get Fed reverse repurchase agreement, also known as reverse repo
+              operations. Only available when markets are open.
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/hardToBorrow</td>
+            <td class="description">
+              Get list of the most expensive stocks to borrows (excluding ADRs,
+              debt)
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/sectors</td>
+            <td class="description">
+              Get list of top sectors and their performance
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/ipoCalendar</td>
+            <td class="description">
+              Get IPO calendar (Historical and future IPOs)
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/economicCalendar</td>
+            <td class="description">
+              Get economic calendar and market-moving events
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/upcomingEarnings</td>
+            <td class="description">Get upcoming earnings</td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/dailyInsiderTransactions</td>
+            <td class="description">Get daily insider transactions</td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/gov/trades/all/[Page number]</td>
+            <td class="description">
+              Get politicians stock trades. If no page number is passed, the API
+              will return the first page only. The list is large, so the max per
+              page is 100 items.
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/gov/trades/individual/[politicianID]</td>
+            <td class="description">
+              Get 100 recent stock trades for a particular politician
+              (politicianID can be retrived from the all trades path)
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/gov/trades/senate</td>
+            <td class="description">Get all trades for the senate members</td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/gov/trades/house</td>
+            <td class="description">
+              Get all trades for the house of representatives members
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/gov/spending/agency</td>
+            <td class="description">Get US government spending by agency</td>
+          </tr>
+          <tr>
+            <td class="path">
+              /snapshot/gov/spending/federalaccounts/[Page number]
+            </td>
+            <td class="description">
+              Get US government spending by federal accounts. If no page number
+              is passed, the API will return the first page only. The list is
+              large, so the max per page is 50 items.
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/gov/spending/state</td>
+            <td class="description">Get US government spending by state</td>
+          </tr>
+          <tr>
+            <td class="path">/snapshot/gov/spending/recipient/[Page number]</td>
+            <td class="description">
+              Get US government spending by recipient. If no page number is
+              passed, the API will return the first page only. The list is
+              large, so the max per page is 50 items.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="route">Stock</h3>
+      <table class="tb">
+        <thead>
+          <th>Path</th>
+          <th class="description">Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="path">/stock/news/[symbol]</td>
+            <td class="description">Get top 10 news articles</td>
+          </tr>
+          <tr>
+            <td class="path">/stock/insights/[symbol]</td>
+            <td class="description">Get insights data</td>
+          </tr>
+          <tr>
+            <td class="path">/stock/summary/[symbol]</td>
+            <td class="description">Get full summary</td>
+          </tr>
+          <tr>
+            <td class="path">/stock/summary/[modules]/[symbol]</td>
+            <td class="description">
+              Get specific modules from the summary. Modules are separated by a
+              comma (example: assetProfile, recommendationTrend,
+              cashflowStatementHistory)
+            </td>
+          </tr>
+          <tr>
+            <td class="path">/stock/options/[symbol]</td>
+            <td class="description">Get options data</td>
+          </tr>
+          <tr>
+            <td class="path">/stock/chart/[symbol]</td>
+            <td class="description">Get charts data</td>
+          </tr>
+          <tr>
+            <td class="path">/stock/darkpools/[symbols]</td>
+            <td class="description">Get darkpools data</td>
+          </tr>
+          <tr>
+            <td class="path">/stock/borrow/[symbols]</td>
+            <td class="description">Get borrow rates and availability data</td>
+          </tr>
+          <tr>
+            <td class="path">/stock/shortinterest/[symbol]</td>
+            <td class="description">Get short interest data</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="route">Dark Pools</h3>
+      <table class="tb">
+        <thead>
+          <th>Path</th>
+          <th class="description">Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="path">/darkpools/list</td>
+            <td class="description">Get list of all known dark pools</td>
+          </tr>
+          <tr>
+            <td class="path">/darkpools/data</td>
+            <td class="description">Get all available dark pools data</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="route">Short Interest</h3>
+      <table class="tb">
+        <thead>
+          <th>Path</th>
+          <th class="description">Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="path">/shortinterest/all</td>
+            <td class="description">Get all available short interest data</td>
+          </tr>
+          <tr>
+            <td class="path">/shortinterest/highest</td>
+            <td class="description">Get high short interest stocks</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="route">Crypto</h3>
+      <h4>Under construction...</h4>
+      <!-- <table class="tb">
 				<thead>
 					<th>Path</th>
-					<th>Description</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="path">/news</td>
-						<td class="description">US general news</td>
-					</tr>
-					<tr>
-						<td class="path">/news/business</td>
-						<td class="description">US business news</td>
-					</tr>
-					<tr>
-						<td class="path">/news/health</td>
-						<td class="description">US health news</td>
-					</tr>
-				</tbody>
-			</table>
-			<h3 class="route">Snapshot</h3>
-			<table class="tb">
-				<thead>
-					<th>Path</th>
-					<th>Description</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="path">/snapshot/gainers</td>
-						<td class="description">Market gainers symbols</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/losers</td>
-						<td class="description">Market losers symbols</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/mostActive</td>
-						<td class="description">Market Most active symbols</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/trendingSymbols</td>
-						<td class="description">Market trending symbols</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/marketTime</td>
-						<td class="description">
-							Market time information - close, open, time until close, time
-							until open, etc
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/marketSummary</td>
-						<td class="description">Market overview and summary</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/reverseRepo</td>
-						<td class="description">
-							Fed reverse repurchase agreement, also known as reverse repo
-							operations. Only available when markets are open.
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/hardToBorrow</td>
-						<td class="description">
-							List of the most expensive stocks to borrows (excluding ADRs,
-							debt)
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/sectors</td>
-						<td class="description">List of top sectors</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/ipoCalendar</td>
-						<td class="description">
-							Get IPO calendar (Historical and future IPOs)
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/economicCalendar</td>
-						<td class="description">
-							Get economic calendar and market-moving events
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/upcomingEarnings</td>
-						<td class="description">Get upcoming earnings</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/dailyInsiderTransactions</td>
-						<td class="description">Get daily insider transactions</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/gov/trades/all/[Page number]</td>
-						<td class="description">
-							Get politicians stock trades. If no page number is passed, the API
-							will return the first page only. The list is large, so the max per
-							page is 100 items.
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/gov/trades/individual/[politicianID]</td>
-						<td class="description">
-							Get 100 recent stock trades of a politician
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/gov/trades/senate</td>
-						<td class="description">Get all trades for the senate members</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/gov/trades/house</td>
-						<td class="description">
-							Get all trades for the house of representatives members
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/gov/spending/agency</td>
-						<td class="description">
-							Get US government spending by agency
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/gov/spending/federalaccount/[Page number]</td>
-						<td class="description">
-							Get US government spending by federal account. If no page number is passed, the API
-							will return the first page only. The list is large, so the max per
-							page is 50 items.
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/gov/spending/state</td>
-						<td class="description">
-							Get US government spending by state
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/snapshot/gov/spending/recipient/[Page number]</td>
-						<td class="description">
-							Get US government spending by recipient. If no page number is passed, the API
-							will return the first page only. The list is large, so the max per
-							page is 50 items.
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<h3 class="route">stock</h3>
-			<table class="tb">
-				<thead>
-					<th>Path</th>
-					<th>Description</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="path">/stock/news/[symbol]</td>
-						<td class="description">Get top 10 articles about a stock</td>
-					</tr>
-					<tr>
-						<td class="path">/stock/insights/[symbol]</td>
-						<td class="description">Get insights data about a stock</td>
-					</tr>
-					<tr>
-						<td class="path">/stock/summary/[symbol]</td>
-						<td class="description">Get full summary about a stock</td>
-					</tr>
-					<tr>
-						<td class="path">/stock/summary/[modules]/[symbol]</td>
-						<td class="description">
-							Get specific summary modules about a stock. Modules are separated
-							by a comma (example: summaryProfile, recommendationTrend,
-							cashflowStatementHistory)
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/stock/options/[symbol]</td>
-						<td class="description">Get options data of a stock</td>
-					</tr>
-					<tr>
-						<td class="path">/stock/chart/[symbol]</td>
-						<td class="description">Get chart data of a stock</td>
-					</tr>
-					<tr>
-						<td class="path">/stock/darkpools/[symbols]</td>
-						<td class="description">Get darkpools data of a stock</td>
-					</tr>
-					<tr>
-						<td class="path">/stock/borrow/[symbols]</td>
-						<td class="description">
-							Get borrow rates and availability data for a specific stock
-						</td>
-					</tr>
-					<tr>
-						<td class="path">/stock/shortinterest/[symbol]</td>
-						<td class="description">
-							Get short interest data for a specific stock
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<h3 class="route">Dark Pools</h3>
-			<table class="tb">
-				<thead>
-					<th>Path</th>
-					<th>Description</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="path">/darkpools/list</td>
-						<td class="description">List of all known dark pools</td>
-					</tr>
-					<tr>
-						<td class="path">/darkpools/data</td>
-						<td class="description">All available dark pools data</td>
-					</tr>
-				</tbody>
-			</table>
-			<h3 class="route">Short Interest</h3>
-			<table class="tb">
-				<thead>
-					<th>Path</th>
-					<th>Description</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="path">/shortinterest/all</td>
-						<td class="description">All available short interest data</td>
-					</tr>
-					<tr>
-						<td class="path">/shortinterest/highest</td>
-						<td class="description">High short interest stocks</td>
-					</tr>
-				</tbody>
-			</table>
-			<h3 class="route">Crypto</h3>
-			<h4>Under construction...</h4>
-			<!-- <table class="tb">
-				<thead>
-					<th>Path</th>
-					<th>Description</th>
+					<th class="description">Description</th>
 				</thead>
 				<tbody>
 					<tr>
@@ -302,6 +294,6 @@
 					</tr>
 				</tbody>
 			</table> -->
-		</div>
-	</body>
+    </div>
+  </body>
 </html>
