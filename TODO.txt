@@ -1,6 +1,8 @@
 ***TODO***
 
-
+1. Add ETF route
+    a. Check if asset is an etf or not, just like how we check for stock and crypto types
+    b. Add as much ETF info as possible
 
 --------------------------------------------------------------
 
