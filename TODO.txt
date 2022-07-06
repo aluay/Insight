@@ -1,10 +1,14 @@
 ***TODO***
 
-1. Add ETF route
+1. OFF EXCHANGE DATA
+    a. get data from the URL below to get the on-exchange and off-exchange data for a stock
+    https://chartexchange.com/symbol/nasdaq-tsla/exchange-volume/
+    
+2. Add ETF route
     a. Check if asset is an etf or not, just like how we check for stock and crypto types
     b. Add as much ETF info as possible
 
-2. Daily Treasury Balance
+3. Daily Treasury Balance
     a. Change the date in the URL to get the data and the page size
     get today's day month and year and plug them to get the latest data
     the api may return an empty object if data is not found for a specific date
