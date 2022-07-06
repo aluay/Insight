@@ -2,8 +2,9 @@
 
 1. OFF EXCHANGE DATA
     a. get data from the URL below to get the on-exchange and off-exchange data for a stock
+    b. *******************ALSO LOOK AT OTHER DATA LIKE SHORT VOLUME AND FAILURE TO DELIVER*******************
     https://chartexchange.com/symbol/nasdaq-tsla/exchange-volume/
-    
+
 2. Add ETF route
     a. Check if asset is an etf or not, just like how we check for stock and crypto types
     b. Add as much ETF info as possible
