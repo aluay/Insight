@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import HtmlTableToJson from "html-table-to-json";
 
 //  Get the top 10 articles related to the stock/company
 export async function news(stock) {
@@ -130,6 +131,39 @@ export async function book(stock) {
     if (response) {
         const data = await response.json();
         return data;
+    } else {
+        return null;
+    }
+}
+
+//  This route will get exchange data for a specific stock
+export async function exchangeVolume(stock) {
+    const URL = `https://chartexchange.com/symbol/${stock}/exchange-volume/`;
+    const response = await fetch(URL);
+    if (response) {
+        const data = await response.text();
+        const jsonTable = HtmlTableToJson.parse(data);
+        for (let i = 0; i < jsonTable._results[1].length; i++) {
+            //  There is a superscript "1" at the end of the "Off exchange" table element
+            //  so this removes the "1" for a cleaner look
+            if (jsonTable._results[1][i].Exchange === "Off Exchange1") {
+                jsonTable._results[1][i].Exchange = "Off Exchange";
+            }
+        }
+        return jsonTable._results[1];
+    } else {
+        return null;
+    }
+}
+
+//  This route will get Fails-to-Deliver (FTDs) data for a specific stock
+export async function failsToDeliver(stock) {
+    const URL = `https://fintel.io/sftd/us/${stock}`;
+    const response = await fetch(URL);
+    if (response) {
+        const data = await response.text();
+        const jsonTable = HtmlTableToJson.parse(data);
+        return jsonTable._results[1];
     } else {
         return null;
     }

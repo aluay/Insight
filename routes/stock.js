@@ -11,7 +11,9 @@ import {
     darkpools,
     borrow,
     shortInterest,
-    book
+    book,
+    exchangeVolume,
+    failsToDeliver
 } from "../controllers/stockController.js";
 
 import {
@@ -190,6 +192,20 @@ router.get("/modules/list", async (req, res) => {
         root: "./views"
     });
 });
+
+//  This route will get exchange data for a specific stock
+router.get("/exchangevolume/:stock", async (req, res) => {
+    const searchStock = await search(req.params.stock)
+    const result = await exchangeVolume(searchStock.symbol)
+    res.send(result);
+})
+
+//  This route will get Fails-to-Deliver (FTDs) data for a specific stock
+router.get("/ftd/:stock", async (req, res) => {
+    const searchStock = await search(req.params.stock)
+    const result = await failsToDeliver(searchStock.symbol)
+    res.send(result);
+})
 
 //  Export the router
 export default router;
