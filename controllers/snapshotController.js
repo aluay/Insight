@@ -404,12 +404,12 @@ export async function getGovSpendingByAgency() {
 export async function getGovSpendingByFederalAccounts(pageNum) {
     const URL = `https://api.usaspending.gov/api/v2/federal_accounts/`;
     const response = await fetch(URL, {
-    "headers": {
-        "Content-Type": "application/json",
-    },
-    "body": `{\"sort\":{\"field\":\"budgetary_resources\",\"direction\":\"desc\"},\"page\":${pageNum},\"limit\":50,\"filters\":{\"fy\":\"2022\"}}`,
-    "method": "POST",
-});
+        "headers": {
+            "Content-Type": "application/json",
+        },
+        "body": `{\"sort\":{\"field\":\"budgetary_resources\",\"direction\":\"desc\"},\"page\":${pageNum},\"limit\":50,\"filters\":{\"fy\":\"2022\"}}`,
+        "method": "POST",
+    });
     if (response) {
         let data = await response.json();
         if (data) {
@@ -450,17 +450,37 @@ export async function getGovSpendingByState() {
 export async function getGovSpendingByRecipient(pageNum) {
     const URL = `https://api.usaspending.gov/api/v2/recipient/`;
     const response = await fetch(URL, {
-    "headers": {
-        "Content-Type": "application/json",
-    },
-    "body": "{\"order\":\"desc\",\"sort\":\"amount\",\"page\":1,\"limit\":50,\"award_type\":\"all\"}",
-    "method": "POST",
-});
+        "headers": {
+            "Content-Type": "application/json",
+        },
+        "body": "{\"order\":\"desc\",\"sort\":\"amount\",\"page\":1,\"limit\":50,\"award_type\":\"all\"}",
+        "method": "POST",
+    });
     if (response) {
         let data = await response.json();
         if (data) {
             let spending = ({
                 description: "US government spending by recipient",
+                ...data
+            })
+            return spending;
+        } else {
+            return null;
+        }
+    } else {
+        return "Something went wrong.";
+    }
+}
+
+//  This route will get US latest treasury balance
+export async function getTreasuryBalance() {
+    const URL = `https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/dts/dts_table_1?sort=-record_date&page[number]=1&page[size]=5`
+    const response = await fetch(URL);
+    if (response) {
+        let data = await response.json();
+        if (data) {
+            let spending = ({
+                description: "Latest US treasury balance. The data includes operating cash balance, deposits and withdrawals of cash, public debt transactions, federal tax deposits, income tax refunds issued (by check and electronic funds transfer (EFT)), short-term cash investments, and issues and redemptions of securities. All figures are rounded to the nearest million.",
                 ...data
             })
             return spending;

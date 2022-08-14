@@ -22,7 +22,8 @@ import {
     getGovSpendingByAgency,
     getGovSpendingByFederalAccounts,
     getGovSpendingByState,
-    getGovSpendingByRecipient
+    getGovSpendingByRecipient,
+    getTreasuryBalance
 } from "../controllers/snapshotController.js"
 
 //  Get market snapshot
@@ -181,6 +182,12 @@ router.get("/gov/spending/recipient/:pageNum?", async (req, res) => {
     const result = await getGovSpendingByRecipient(pageNum);
     res.send(result);
 });
+
+//  Get latest US treasury balance
+router.get("/gov/treasurybalance", async (req, res) => {
+    const result = await getTreasuryBalance();
+    res.send(result)
+})
 
 //  Export router
 export default router;

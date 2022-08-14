@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import HtmlTableToJson from "html-table-to-json";
 
 //  Get the top 10 articles related to the stock/company
-export async function news(stock) {
+export async function getNews(stock) {
     let news = [];
     const URL = `https://www.barrons.com/market-data/api/millstone?ticker=${stock}&PAGE={%22renderTab%22:%22%22,%22assetType%22:%22stock%22,%22analyticsValue%22:%22stockoverview%22}`;
     const response = await fetch(URL);
@@ -27,7 +27,7 @@ export async function news(stock) {
 }
 
 //  Get insights 
-export async function insights(stock) {
+export async function getInsights(stock) {
     const URL = `https://query2.finance.yahoo.com/ws/insights/v2/finance/insights?symbol=${stock}`;
     const response = await fetch(URL);
     if (response) {
@@ -39,7 +39,7 @@ export async function insights(stock) {
 }
 
 //  Get full summary 
-export async function summary(stock) {
+export async function getSummary(stock) {
     const URL = `https://query2.finance.yahoo.com/v10/finance/quoteSummary/${stock}?modules=assetProfile%2CsummaryProfile%2CsummaryDetail%2CesgScores%2Cprice%2CincomeStatementHistory%2CincomeStatementHistoryQuarterly%2CbalanceSheetHistory%2CbalanceSheetHistoryQuarterly%2CcashflowStatementHistory%2CcashflowStatementHistoryQuarterly%2CdefaultKeyStatistics%2CfinancialData%2CcalendarEvents%2CsecFilings%2CrecommendationTrend%2CupgradeDowngradeHistory%2CinstitutionOwnership%2CfundOwnership%2CmajorDirectHolders%2CmajorHoldersBreakdown%2CinsiderTransactions%2CinsiderHolders%2CnetSharePurchaseActivity%2Cearnings%2CearningsHistory%2CearningsTrend%2CindustryTrend%2CindexTrend%2CsectorTrend`;
     const response = await fetch(URL);
     if (response) {
@@ -51,7 +51,7 @@ export async function summary(stock) {
 }
 
 //   This route will get specific section of the summary 
-export async function modules(stock, modules) {
+export async function getModules(stock, modules) {
     const URL = `https://query2.finance.yahoo.com/v10/finance/quoteSummary/${stock}?modules=${modules}`;
     const response = await fetch(URL);
     if (response) {
@@ -63,7 +63,7 @@ export async function modules(stock, modules) {
 }
 
 //  Get options 
-export async function options(stock) {
+export async function getOptions(stock) {
     const URL = `https://query2.finance.yahoo.com/v7/finance/options/${stock}`;
     const response = await fetch(URL);
     if (response) {
@@ -75,7 +75,7 @@ export async function options(stock) {
 }
 
 //  Get chart data 
-export async function chart(stock) {
+export async function getChart(stock) {
     const URL = `https://query1.finance.yahoo.com/v7/finance/chart/${stock}?range=2y&interval=1d&indicators=quote&includeTimestamps=true`;
     const response = await fetch(URL);
     if (response) {
@@ -87,7 +87,7 @@ export async function chart(stock) {
 }
 
 //  Get darkpools data for a specific stock
-export async function darkpools(stock) {
+export async function getDarkpools(stock) {
     const URL = `https://www.stockgrid.io/get_dark_pool_individual_data?ticker=${stock.toUpperCase()}`;
     const response = await fetch(URL);
     if (response) {
@@ -99,7 +99,7 @@ export async function darkpools(stock) {
 }
 
 //  Get borrow rates and availability data for a specific stock
-export async function borrow(stock) {
+export async function getBorrow(stock) {
     const URL = `https://iborrowdesk.com/api/ticker/${stock.toUpperCase()}`;
     const response = await fetch(URL);
     if (response) {
@@ -111,7 +111,7 @@ export async function borrow(stock) {
 }
 
 //  Get short interest data for a specific stock
-export async function shortInterest(stock) {
+export async function getShortInterest(stock) {
     const URL = `https://www.stockgrid.io/get_dark_pool_individual_data?ticker=${stock.toUpperCase()}`;
     const response = await fetch(URL);
     if (response) {
@@ -123,7 +123,7 @@ export async function shortInterest(stock) {
 }
 
 //  This route will get bid/ask data for a specific stock
-export async function book(stock) {
+export async function getBook(stock) {
     const URL = `https://www.cboe.com/json/bzx/book/${stock.toUpperCase()}`;
     const response = await fetch(URL, {
         "referrer": "https://www.cboe.com",
@@ -137,7 +137,7 @@ export async function book(stock) {
 }
 
 //  This route will get exchange data for a specific stock
-export async function exchangeVolume(stock) {
+export async function getExchangeVolume(stock) {
     const URL = `https://chartexchange.com/symbol/${stock}/exchange-volume/`;
     const response = await fetch(URL);
     if (response) {
@@ -157,7 +157,7 @@ export async function exchangeVolume(stock) {
 }
 
 //  This route will get Fails-to-Deliver (FTDs) data for a specific stock
-export async function failsToDeliver(stock) {
+export async function getFailsToDeliver(stock) {
     const URL = `https://fintel.io/sftd/us/${stock}`;
     const response = await fetch(URL);
     if (response) {

@@ -2,18 +2,18 @@ import express from "express";
 const router = express.Router();
 
 import {
-    news,
-    insights,
-    summary,
-    modules,
-    options,
-    chart,
-    darkpools,
-    borrow,
-    shortInterest,
-    book,
-    exchangeVolume,
-    failsToDeliver
+    getNews,
+    getInsights,
+    getSummary,
+    getModules,
+    getOptions,
+    getChart,
+    getDarkpools,
+    getBorrow,
+    getShortInterest,
+    getBook,
+    getExchangeVolume,
+    getFailsToDeliver
 } from "../controllers/stockController.js";
 
 import {
@@ -25,7 +25,7 @@ router.get("/news/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await news(searchStock.symbol);
+            const result = await getNews(searchStock.symbol);
             res.send(result);
         } else {
             res.send({
@@ -44,7 +44,7 @@ router.get("/insights/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await insights(searchStock.symbol);
+            const result = await getInsights(searchStock.symbol);
             res.send(result);
         } else {
             res.send({
@@ -63,7 +63,7 @@ router.get("/summary/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await summary(searchStock.symbol);
+            const result = await getSummary(searchStock.symbol);
             res.send(result);
         } else {
             res.send({
@@ -82,7 +82,7 @@ router.get("/summary/:modules/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await modules(searchStock.symbol, req.params.modules);
+            const result = await getModules(searchStock.symbol, req.params.modules);
             res.send(result);
         } else {
             res.send({
@@ -101,7 +101,7 @@ router.get("/options/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await options(searchStock.symbol);
+            const result = await getOptions(searchStock.symbol);
             res.send(result);
         } else {
             res.send({
@@ -120,7 +120,7 @@ router.get("/chart/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await chart(searchStock.symbol);
+            const result = await getChart(searchStock.symbol);
             res.send(result);
         } else {
             res.send({
@@ -139,7 +139,7 @@ router.get("/darkpools/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await darkpools(searchStock.symbol);
+            const result = await getDarkpools(searchStock.symbol);
             res.send(result);
         } else {
             res.send({
@@ -158,7 +158,7 @@ router.get("/borrow/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await borrow(searchStock.symbol);
+            const result = await getBook(searchStock.symbol);
             res.send(result);
         } else {
             res.send({
@@ -175,14 +175,14 @@ router.get("/borrow/:stock", async (req, res) => {
 //  This route will get shortinterest data for a specific stock
 router.get("/shortinterest/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
-    const result = await shortInterest(searchStock.symbol);
+    const result = await getShortInterest(searchStock.symbol);
     res.send(result);
 });
 
 //  This route will get bid/ask data for a specific stock
 router.get("/book/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
-    const result = await book(searchStock.symbol);
+    const result = await getBook(searchStock.symbol);
     res.send(result);
 });
 
@@ -196,14 +196,14 @@ router.get("/modules/list", async (req, res) => {
 //  This route will get exchange data for a specific stock
 router.get("/exchangevolume/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock)
-    const result = await exchangeVolume(searchStock.symbol)
+    const result = await getExchangeVolume(searchStock.symbol)
     res.send(result);
 })
 
 //  This route will get Fails-to-Deliver (FTDs) data for a specific stock
 router.get("/ftd/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock)
-    const result = await failsToDeliver(searchStock.symbol)
+    const result = await getFailsToDeliver(searchStock.symbol)
     res.send(result);
 })
 

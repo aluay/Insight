@@ -6,7 +6,7 @@ import {
 } from "../controllers/cryptoController.js";
 
 import {
-    summary
+    getSummary
 } from "../controllers/stockController.js";
 import {
     search
@@ -23,7 +23,7 @@ router.get("/:crypto", async (req, res) => {
     const searchCrypto = await search(req.params.crypto);
     if (searchCrypto) {
         if (searchCrypto.quoteType.toLowerCase() === "cryptocurrency") {
-            const result = await summary(searchCrypto.symbol);
+            const result = await getSummary(searchCrypto.symbol);
             res.send(result);
         } else {
             res.send({
