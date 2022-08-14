@@ -13,7 +13,8 @@ import {
     getShortInterest,
     getBook,
     getExchangeVolume,
-    getFailsToDeliver
+    getFailsToDeliver,
+    getSentimentAnalysis
 } from "../controllers/stockController.js";
 
 import {
@@ -204,6 +205,13 @@ router.get("/exchangevolume/:stock", async (req, res) => {
 router.get("/ftd/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock)
     const result = await getFailsToDeliver(searchStock.symbol)
+    res.send(result);
+})
+
+//  This router will get sentiment analysis score about a specific stock
+router.get("/sentimentanalysis/:stock", async (req, res) => {
+    const searchStock = await search(req.params.stock)
+    const result = await getSentimentAnalysis(searchStock.symbol)
     res.send(result);
 })
 

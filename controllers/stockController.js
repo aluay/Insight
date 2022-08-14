@@ -168,3 +168,18 @@ export async function getFailsToDeliver(stock) {
         return null;
     }
 }
+
+//  This router will get sentiment analysis score about a specific stock
+export async function getSentimentAnalysis(stock) {
+    const response = await fetch(`https://socialsentiment.io/stocks/symbol/${stock}/sentiment/?period=day&start=-14&end=`, {
+        "headers": {
+            "X-Requested-With": "XMLHttpRequest",
+        },
+    });
+    if (response) {
+        const data = await response.json();
+        return data.data;
+    } else {
+        return null;
+    }
+}
