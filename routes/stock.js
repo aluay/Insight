@@ -159,7 +159,7 @@ router.get("/borrow/:stock", async (req, res) => {
     const searchStock = await search(req.params.stock);
     if (searchStock) {
         if (searchStock.quoteType.toLowerCase() === "equity") {
-            const result = await getBook(searchStock.symbol);
+            const result = await getBorrow(searchStock.symbol);
             res.send(result);
         } else {
             res.send({
