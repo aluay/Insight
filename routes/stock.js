@@ -35,7 +35,7 @@ router.get("/news/:stock", async (req, res) => {
         }
     } else {
         res.send({
-            Error: "Symbol not found"
+            Error: "Stock not found"
         })
     }
 });
@@ -54,7 +54,7 @@ router.get("/insights/:stock", async (req, res) => {
         }
     } else {
         res.send({
-            Error: "Symbol not found"
+            Error: "Stock not found"
         })
     }
 });
@@ -73,7 +73,7 @@ router.get("/summary/:stock", async (req, res) => {
         }
     } else {
         res.send({
-            Error: "Symbol not found"
+            Error: "Stock not found"
         })
     }
 });
@@ -92,7 +92,7 @@ router.get("/summary/:modules/:stock", async (req, res) => {
         }
     } else {
         res.send({
-            Error: "Symbol not found"
+            Error: "Stock not found"
         })
     }
 });
@@ -111,7 +111,7 @@ router.get("/options/:stock", async (req, res) => {
         }
     } else {
         res.send({
-            Error: "Symbol not found"
+            Error: "Stock not found"
         })
     }
 });
@@ -130,7 +130,7 @@ router.get("/chart/:stock", async (req, res) => {
         }
     } else {
         res.send({
-            Error: "Symbol not found"
+            Error: "Stock not found"
         })
     }
 });
@@ -149,7 +149,7 @@ router.get("/darkpools/:stock", async (req, res) => {
         }
     } else {
         res.send({
-            Error: "Symbol not found"
+            Error: "Stock not found"
         })
     }
 });
@@ -168,7 +168,7 @@ router.get("/borrow/:stock", async (req, res) => {
         }
     } else {
         res.send({
-            Error: "Symbol not found"
+            Error: "Stock not found"
         })
     }
 });
